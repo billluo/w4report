@@ -1,0 +1,13 @@
+connection1 = getConnectionToDatabase1();
+connection2 = getConnectionToDatabase2();
+ 
+Statement st1 = connect1.getStatement("select from 1 table on 1 database");
+resultSet1 = st1.select();
+ 
+while(rs1.hasNext(){
+    Statement st2 = connection2.getStatement("selelct from 1 table on database 2, where column = value from rs1");
+    ResultSet2 = st2.select();
+    while(ResultSet2.hasNext(){
+           // use the results
+    }
+}
