@@ -1,10 +1,21 @@
-app.controller('MainController',function($scope, $http) {
+app.	controller('MainController', function ($scope,$http) {
 	$scope.cyclecounts=null;
-//	$http.get("http://localhost:8080/w4reports/cycledtlreporttest/8000417428L")
-	$http.get("http://localhost:8080/w4reports/cycledtlreport")
+	var urlRpt = '/w4report/cycledtlreport';
+	$http.get(urlRpt)
 		.success(function(data){
 			$scope.cyclecounts = data; 
+			$scope.dataCsv = data; 
 		}).error(function(){
 	        alert("error");
-	    })
-});
+	    });
+	$scope.getHeader = function () {
+		return ["Counted Date",
+		        "Warehouse",
+		        "Location Name",
+		        "SKU Id",
+		        "Style",
+		        "Expected Qty",
+		        "Actual Qty",
+		        "Variance Qty"
+		        ]};
+    });

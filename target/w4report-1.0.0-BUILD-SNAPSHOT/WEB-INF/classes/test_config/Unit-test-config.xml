@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:tx="http://www.springframework.org/schema/tx" 
+		xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+		xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+
+    <!-- Configurer that replaces ${...} placeholders with values from a properties file -->
+    <!-- (in this case, JDBC-related settings for the JPA EntityManager definition below) -->
+ <!--    <context:property-placeholder location="classpath:test_config/data-access.properties" system-properties-mode="OVERRIDE"/> -->
+            
+        <tx:annotation-driven />
+    		<context:component-scan
+            base-package="domain,repository,service,controller"/>
+                   
+        <beans profile="testCycleCount">
+        <!-- JPA EntityManagerFactory -->
+        		<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        		<property name="dataSource" ref="dataSource"/>
+            		<property name="jpaVendorAdapter">
+            			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+            				 <property name="generateDdl" value="true" />
+            			</bean>
+            		</property>
+            		<!--with package scan, the persistence unit is not necessary  -->
+            		<property name="packagesToScan">
+         			<array>
+              			<value>domain</value>
+              			<value>repository</value>
+              			<value>service</value>
+              			<value>controller</value>
+         			</array>
+     			</property>   
+        		</bean>
+        
+        <jdbc:embedded-database id="dataSource" type="HSQL">
+	    </jdbc:embedded-database>
+	    
+
+        <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
+        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
+              p:entityManagerFactory-ref="entityManagerFactory"/>
+
+        <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+    </beans>
+	
+</beans>
+		

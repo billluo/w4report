@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import service.ReportServiceImpl;
 //@ContextConfiguration(loader=AnnotationConfigContextLoader.class,
 //	classes={DispatcherServletInitializer.class,WebMvcConfig.class,TestDataAccessConfig.class})
-@ContextConfiguration(locations="classpath:test_config/test-config.xml")
+@ContextConfiguration(locations="classpath:test_config/Integration-test-config.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("testCycleCount")
 @ComponentScan({"domain","repository","service","controller"})
