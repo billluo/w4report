@@ -16,6 +16,7 @@ import service.ReportServiceImpl;
 
 @RestController
 public class RestReport {
+	
 	@Autowired
 	@Qualifier("reportService")
 	public ReportServiceImpl reportServiceImpl;

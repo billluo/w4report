@@ -24,15 +24,5 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-
-//	@Override
-//	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-//		converters.add(new MappingJackson2HttpMessageConverter());
-//		converters.add(new ByteArrayHttpMessageConverter());
-//		converters.add(new SourceHttpMessageConverter());
-//		converters.add(new FormHttpMessageConverter());
-//		converters.add(new StringHttpMessageConverter());
-//		            
-//	}
 	
 }

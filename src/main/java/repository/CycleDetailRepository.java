@@ -5,18 +5,19 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
 import domain.CycleDetail;
 @Repository("cycleRepo")
 public class CycleDetailRepository  {
+	
     @PersistenceContext
     private EntityManager em;
     
-    @SuppressWarnings("unchecked")
 	public List<CycleDetail> findTop10(){
-        Query query = this.em.createQuery(" FROM CycleDetail");
+        TypedQuery<CycleDetail> query = this.em.createQuery(" FROM CycleDetail",CycleDetail.class);
         int pageNumber = 1;
         int pageSize = 10;
         query.setFirstResult((pageNumber-1) * pageSize);
@@ -24,10 +25,9 @@ public class CycleDetailRepository  {
         return query.getResultList();
     };
 	
-	@SuppressWarnings("unchecked")
 	public List<CycleDetail> findBySkuId(Long skuId){
-        Query query = this.em.createQuery("SELECT DISTINCT locationName FROM "
-        		+ "CycleDetail cycledetail WHERE cycledetail.skuId =:skuId");
+        TypedQuery<CycleDetail> query = this.em.createQuery("SELECT DISTINCT locationName FROM "
+        		+ "CycleDetail cycledetail WHERE cycledetail.skuId =:skuId",CycleDetail.class);
         query.setParameter("skuId", skuId );
         return query.getResultList();
 	};

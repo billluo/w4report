@@ -89,5 +89,78 @@ public class CycleDetail {
 		this.varianceQty = varianceQty;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((actualQty == null) ? 0 : actualQty.hashCode());
+		result = prime * result
+				+ ((countedDate == null) ? 0 : countedDate.hashCode());
+		result = prime * result
+				+ ((expectedQty == null) ? 0 : expectedQty.hashCode());
+		result = prime * result
+				+ ((locationName == null) ? 0 : locationName.hashCode());
+		result = prime * result + ((skuId == null) ? 0 : skuId.hashCode());
+		result = prime * result + ((style == null) ? 0 : style.hashCode());
+		result = prime * result
+				+ ((varianceQty == null) ? 0 : varianceQty.hashCode());
+		result = prime * result
+				+ ((warehouse == null) ? 0 : warehouse.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CycleDetail other = (CycleDetail) obj;
+		if (actualQty == null) {
+			if (other.actualQty != null)
+				return false;
+		} else if (!actualQty.equals(other.actualQty))
+			return false;
+		if (countedDate == null) {
+			if (other.countedDate != null)
+				return false;
+		} else if (!countedDate.equals(other.countedDate))
+			return false;
+		if (expectedQty == null) {
+			if (other.expectedQty != null)
+				return false;
+		} else if (!expectedQty.equals(other.expectedQty))
+			return false;
+		if (locationName == null) {
+			if (other.locationName != null)
+				return false;
+		} else if (!locationName.equals(other.locationName))
+			return false;
+		if (skuId == null) {
+			if (other.skuId != null)
+				return false;
+		} else if (!skuId.equals(other.skuId))
+			return false;
+		if (style == null) {
+			if (other.style != null)
+				return false;
+		} else if (!style.equals(other.style))
+			return false;
+		if (varianceQty == null) {
+			if (other.varianceQty != null)
+				return false;
+		} else if (!varianceQty.equals(other.varianceQty))
+			return false;
+		if (warehouse == null) {
+			if (other.warehouse != null)
+				return false;
+		} else if (!warehouse.equals(other.warehouse))
+			return false;
+		return true;
+	}
+
 
 }
