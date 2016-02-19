@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Repository;
 
 import domain.CycleDetail;
@@ -25,8 +25,9 @@ public class CycleDetailRepository  {
         return query.getResultList();
     };
 	
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
 	public List<CycleDetail> findBySkuId(Long skuId){
-        TypedQuery<CycleDetail> query = this.em.createQuery("SELECT DISTINCT locationName FROM "
+        TypedQuery<CycleDetail> query = this.em.createQuery("SELECT DISTINCT cycledetail FROM "
         		+ "CycleDetail cycledetail WHERE cycledetail.skuId =:skuId",CycleDetail.class);
         query.setParameter("skuId", skuId );
         return query.getResultList();

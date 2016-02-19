@@ -21,13 +21,13 @@ public class RestReport {
 	@Qualifier("reportService")
 	public ReportServiceImpl reportServiceImpl;
 	
-	@RequestMapping(value = "/cycledtlreport", method=RequestMethod.GET)
+	@RequestMapping(value = "/v1/cycledtlreport", method=RequestMethod.GET)
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody List<CycleDetail> cycleDetailReport(){
 		return reportServiceImpl.listCycleDetails();
 	}
 	
-	@RequestMapping(value = "/cycledtlreporttest/{skuId}", method=RequestMethod.GET)
+	@RequestMapping(value = "/v1/cycledtlreporttest/{skuId}", method=RequestMethod.GET)
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody List<CycleDetail> cycleDetailRecord(@PathVariable("skuId") String skuId){
 		Long skuIdLong= Long.valueOf(skuId);

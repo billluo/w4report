@@ -44,11 +44,10 @@ public class DataAccessConfig {
 	    //dataSource.setDriverClassName(
 //	    		"com.microsoft.sqlserver.jdbc.SQLServerDriver");--for SQL SERVER 2008
 	    dataSource.setDriverClassName("net.sourceforge.jtds.jdbc.Driver");
-//	    	dataSource.setUrl("jdbc:jtds:sqlserver://KXXX-4XXXX:30001/wm_test;"
-	    	dataSource.setUrl("jdbc:jtds:sqlserver://KOCH-4WALL:30001/wm_test;"
+	    	dataSource.setUrl("jdbc:jtds:sqlserver://XXXX-4WALL:30001/wm_test;"
 	    			+ "useNTLMv2=true;domain=RH");
 		dataSource.setUsername("bluo");
-		dataSource.setPassword("MNbv0987");
+		dataSource.setPassword("XXXXXXX");
 		
 	    return dataSource;
 	  

@@ -1,6 +1,6 @@
 app.	controller('MainController', function ($scope,$http) {
 	$scope.cyclecounts=null;
-	var urlRpt = '/w4report/cycledtlreport';
+	var urlRpt = '/w4report/v1/cycledtlreport';
 	$http.get(urlRpt)
 		.success(function(data){
 			$scope.cyclecounts = data; 
